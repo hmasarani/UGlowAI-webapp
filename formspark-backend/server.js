@@ -253,6 +253,12 @@ app.use((req, res, next) => {
   });
 });
 
+app.get('/debug-env', (req, res) => {
+  res.json({
+    openaiApiKey: process.env.OPENAI_API_KEY ? "Exists" : "Missing",
+  });
+});
+
 // Global error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
